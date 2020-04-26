@@ -945,55 +945,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>C&oacute; lỗi xảy ra</p>
 </div>
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyHTG-m7lGCpJurzgPRfPvoxya6L1LSPOcoE6OcCcnoo9e-aAkR/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const formmodal = document.forms['submit-to-google-sheet-modal']
-    const loading = document.querySelector('.js-loading')
-    const successMessage = document.querySelector('.js-success-message')
-    const errorMessage = document.querySelector('.js-error-message')
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyHTG-m7lGCpJurzgPRfPvoxya6L1LSPOcoE6OcCcnoo9e-aAkR/exec'
+  const form = document.forms['submit-to-google-sheet']
 
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      showLoadingIndicator()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => showSuccessMessage(response))
-        .catch(error => showErrorMessage(error))
-    })
-
-    function showLoadingIndicator () {
-      form.classList.add('is-hidden')
-      loading.classList.remove('is-hidden')
-    }
-
-    formmodal.addEventListener('submit', e => {
-      e.preventDefault()
-      showLoadingIndicatorModal()
-      fetch(scriptURL, { method: 'POST', body: new FormData(formmodal)})
-        .then(response => showSuccessMessage(response))
-        .catch(error => showErrorMessage(error))
-    })
-
-    function showLoadingIndicatorModal () {
-      formmodal.classList.add('is-hidden')
-      loading.classList.remove('is-hidden')
-    }
-
-    function showSuccessMessage (response) {
-      console.log('Success!', response)
-      setTimeout(() => {
-        successMessage.classList.remove('is-hidden')
-        loading.classList.add('is-hidden')
-      }, 500)
-    }
-
-    function showErrorMessage (error) {
-      console.error('Error!', error.message)
-      setTimeout(() => {
-        errorMessage.classList.remove('is-hidden')
-        loading.classList.add('is-hidden')
-      }, 500)
-    }
-  </script>
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 
 
@@ -1540,144 +1501,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 </p>
-
-
-
-    <div class="modal fade" id="Modalreg2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog" role="document">
-
-            <form name="submit-to-google-sheet-modal"><input name="_token" type="hidden">
-
-                <div class="modal-content">
-
-                   <div class="modal-header mbc-modal-header">
-
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Tắt</span></button>
-
-                      <h4 class="modal-title" id="exampleModalLabel">
-
-                         <span style="color:#f16522;  font-weight:700">ĐĂNG KÝ NGAY</span> 
-
-
-
-                     </h4>
-
-                 </div>
-
-                 <div class="modal-body">
-
-                  <div id="successpanelpopup" class="success-panel" style="display:none; ">
-
-                     <div id="Module76">
-
-
-                     </div>
-
-
-
-
-
-                 </div>
-
-                 <div id="popup2" class="input-form-zone">
-
-                   <div class="intro-form" style="margin-bottom:5px;">
-
-                      <div id="Module79">
-
-                         <p style="text-align:start">Quý khách có nhu cầu vay vốn, tín dụng xin liên hệ Hotline: <a href="tel:+84936630896"><strong>0936.63.08.96</strong></a> | <a href="tel:+84936630896"><strong>0936.63.08.96</strong></a> hoặc điền thông tin vào form dưới đây nhé.</p>
-
-                     </div>
-
-                 </div>
-
-                 <div class="form-group">
-
-                  <input type="text" class="form-control" name="name" value="" id="contact_name" placeholder="Họ tên" required>
-
-              </div>
-
-              <div class="form-group">
-
-                  <input type="text" class="form-control" name="phone" value="" id="contact_phone" placeholder="Số điện thoại" required>
-
-              </div>
-
-              <div class="form-group">
-
-                  <input type="text" class="form-control" name="passport" value="" id="contact_passport" placeholder="Số CMND/ Thẻ căn cước" required>
-
-              </div>
-
-              <div class="form-group">
-
-                  <input type="congviec" class="form-control" name="congviec" value="" id="contact_congviec" placeholder="Công việc hiện tại: Giám đốc, kỹ sư">
-
-              </div>
-
-              <div class="form-group">
-
-                  <input type="money" class="form-control" name="money" value="" id="contact_money" placeholder="Số Tiền Vay: 800.000.000">
-
-              </div>
-
-              <div class="form-group">
-
-                  <input type="text" class="form-control" name="address" value="" id="contact_address" placeholder="Địa chỉ" required>
-
-              </div>
-
-              <div class="form-group">
-
-                  <textarea name="content" id="contact_content" class="form-control" rows="5" placeholder="Thông điệp"></textarea>
-
-              </div>
-
-          </div>
-
-      </div>
-
-      <div class="modal-footer">
-
-
-
-        <button class="btn-send-request-popup btn btn-success cyan text"> Gửi yêu cầu  <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-
-				<!--  <div id="btnsendrequestpopup" class="btn-send-request-popup">
-
-				<a href="#" class="input-form-zone hvr-forward">Gửi yêu cầu <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-
-            </div> -->
-
-            <div class="Hotline-popup"><span><a href="tel:+84936630896"><strong>0936.63.08.96</strong></a>  <a href="tel:+84936630896"><strong>0936.63.08.96</strong></a></span></div>
-
-        </div>
-
-    </div>
-
-</form>
-
-
-
-
-
-<!-- <script type="text/javascript">
-
-	$(".btnreg").click(function () {
-
-		$('#Modalreg2').modal('show');
-
-	});
-
-
-
-</script> -->
-
-</div>
-
-</div>
-
 
 
 
